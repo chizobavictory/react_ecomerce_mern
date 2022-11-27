@@ -69,12 +69,15 @@ const Desc = styled.p`
   margin: 20px 0px;
   font-size: 20px;
   font-weight: 500;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 `;
 
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
+  &:hover {
+    border-color: teal;
+  }
   background-color: transparent;
   cursor: pointer;
 `;

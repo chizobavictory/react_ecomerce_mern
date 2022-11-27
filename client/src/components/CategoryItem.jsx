@@ -5,8 +5,11 @@ const Container = styled.div`
   flex: 1;
   margin: 7px;
   height: 70vh;
+  &:hover {
+    opacity: 0.5;
+  }
   position: relative;
-`;
+  `;
 
 const Image = styled.img`
   width: 100%;

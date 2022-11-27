@@ -25,7 +25,7 @@ export const sliderItems = [
 export const categories = [
   {
     id: 1,
-    img: "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8TElWRVNUT0NLfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    img: "https://images.unsplash.com/photo-1573865174887-dd85bc60e3e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
     title: "LIVESTOCK",
   },
   {
