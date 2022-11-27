@@ -21,3 +21,21 @@ export const sliderItems = [
     bg: "f8edfc",
   },
 ];
+
+export const categories = [
+  {
+    id: 1,
+    img: "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8TElWRVNUT0NLfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+    title: "LIVESTOCK",
+  },
+  {
+    id: 2,
+    img: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8VE9NQVRPRVN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+    title: "FRUITS & VEGETABLES",
+  },
+  {
+    id: 3,
+    img: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8UE9VTFRSWXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    title: "POULTRY",
+  },
+];
