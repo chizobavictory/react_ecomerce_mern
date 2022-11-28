@@ -5,11 +5,19 @@ const Container = styled.div`
   flex: 1;
   margin: 7px;
   height: 70vh;
-  &:hover {
-    opacity: 0.5;
-  }
   position: relative;
   `;
+
+const Overlay = styled.div`
+  width: 100%;
+  height: 100%;  
+  filter: brightness(100%);
+  transition: filter 1s ease;
+  &:hover {
+    filter: brightness(50%);
+    cursor: pointer;
+  }
+`
 
 const Image = styled.img`
   width: 100%;
@@ -47,11 +55,13 @@ const Button = styled.button`
 const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Image src={item.img} />
+      <Overlay>
       <Info>
         <Title>{item.title}</Title>
         <Button>SHOP NOW</Button>
       </Info>
+      <Image src={item.img} />
+      </Overlay>
     </Container>
   );
 };
