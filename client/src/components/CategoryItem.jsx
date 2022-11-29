@@ -1,30 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
-const Container = styled.div`
-  flex: 1;
-  margin: 7px;
-  height: 70vh;
-  position: relative;
-  `;
-
-const Overlay = styled.div`
-  width: 100%;
-  height: 100%;  
-  filter: brightness(100%);
-  transition: filter 1s ease;
-  &:hover {
-    filter: brightness(50%);
-    cursor: pointer;
-  }
-`
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  ${mobile({ height: "20vh" })}
-`;
 
 const Info = styled.div`
   position: absolute;
@@ -37,6 +13,38 @@ const Info = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+const Overlay = styled.div`
+opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+`
+
+const Container = styled.div`
+  flex: 1;
+  margin: 7px;
+  height: 70vh;
+  position: relative;
+  background-color: #f5fbfd;
+  cursor: pointer;
+  &:hover ${Overlay}{
+    opacity: 1;
+  }
+  `;
+
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  ${mobile({ height: "20vh" })}
+`;
+
 
 const Title = styled.h1`
     color:white;
@@ -55,13 +63,12 @@ const Button = styled.button`
 const CategoryItem = ({ item }) => {
   return (
     <Container>
-      <Overlay>
+      <Image src={item.img} />
+      <Overlay />
       <Info>
         <Title>{item.title}</Title>
         <Button>SHOP NOW</Button>
       </Info>
-      <Image src={item.img} />
-      </Overlay>
     </Container>
   );
 };
