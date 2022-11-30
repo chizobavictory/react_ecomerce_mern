@@ -1,7 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import userRouter from './routes/user'
+
+import userRoutes from "./routes/user.js";
+import auth from "./routes/auth.js";
 
 const app = express();
 dotenv.config();
@@ -11,8 +13,9 @@ mongoose
   .then(() => console.log("DBConnection Successfull"))
   .catch((err) => console.log(err));
 
+app.use(express.json());
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running on port: 5000!");
 });
 
-app.use('/api/user',userRouter)
+app.use('/users', userRoutes);
