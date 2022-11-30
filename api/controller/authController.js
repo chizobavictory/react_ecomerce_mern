@@ -1,14 +1,11 @@
-import express from "express";
 import User from "../models/UserModel.js";
 
+//REGISTER
 export const register = async (req, res) => {
   const newUser = new User({
     username: req.body.username,
     email: req.body.email,
-    password: CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString(),
+    password: req.body.password,
   });
 
   try {
@@ -17,4 +14,4 @@ export const register = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};

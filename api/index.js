@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import userRoutes from "./routes/user.js";
-import auth from "./routes/auth.js";
+import authRoutes from "./routes/auth.js";
 
 const app = express();
 dotenv.config();
@@ -18,4 +18,5 @@ app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running on port: 5000!");
 });
 
-app.use('/users', userRoutes);
+app.use("/users", userRoutes);
+app.use("/auth", authRoutes);
