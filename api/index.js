@@ -14,9 +14,12 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(express.json());
+
+const PORT = 5000;
 app.listen(process.env.PORT || 5000, () => {
-  console.log("Backend server is running on port: 5000!");
+  console.log(`Backend server is running on port: ${PORT}`);
 });
 
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
+
