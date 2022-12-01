@@ -1,6 +1,5 @@
-import CryptoJS from "crypto-js";
-import jwt from "jsonwebtoken";
-import ProductModel from "../models/Product.js";
+import product from '../model/productModel.js';
+
 
 //CREATE
 export const createProduct = async (req, res) => {
@@ -49,6 +48,7 @@ export const getProduct = async (req, res) => {
     res.status(500).json(err);
   }
 }
+
 
 //GET ALL PRODUCTS
 export const getAllProducts = async (req, res) => {
