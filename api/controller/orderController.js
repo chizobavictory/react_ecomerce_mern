@@ -1,3 +1,5 @@
+import Order from "../models/OrderModel";
+
 //CREATE
 export const createOrder = async (req, res) => {
   const newOrder = new Order(req.body);
