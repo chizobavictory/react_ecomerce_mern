@@ -1,8 +1,9 @@
 import express from "express";
+const router = express.Router();
+
 import { register, login, updateUser, deleteUser, getUser, getAllUsers, getUserStats } from "../controller/userController.js";
 import { verifyTokenAndAdmin, verifyTokenAndAuthorization } from "../middlewares/auth.js";
 
-const router = express.Router();
 
 router.post("/register", register); //CREATE
 router.post("/login", login); //LOGIN
