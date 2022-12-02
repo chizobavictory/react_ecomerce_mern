@@ -1,5 +1,5 @@
 //CREATE
-export const createOrder = async (req, res) => {
+export const createCart = async (req, res) => {
   const newCart = new Cart(req.body);
 
   try {
@@ -11,7 +11,7 @@ export const createOrder = async (req, res) => {
 }
 
 //DELETE
-export const deleteOrder = async (req, res) => {
+export const deleteCart = async (req, res) => {
   try {
     await Cart.findByIdAndDelete(req.params.id);
     res.status(200).json("Cart has been deleted...");
@@ -22,7 +22,7 @@ export const deleteOrder = async (req, res) => {
 
 
 //UPDATE ORDER
-export const updateOrder = async (req, res) => {
+export const updateCart = async (req, res) => {
   try {
     const updatedCart = await Cart.findByIdAndUpdate(
       req.params.id,
@@ -39,7 +39,7 @@ export const updateOrder = async (req, res) => {
 
 
 //GET ORDER
-export const getOrder = async (req, res) => {
+export const getCart = async (req, res) => {
   try {
     const cart = await Cart.findOne({ userId: req.params.userId });
     res.status(200).json(cart);
@@ -50,7 +50,7 @@ export const getOrder = async (req, res) => {
 
 
 //GET ALL ORDERS
-export const getAllOrders = async (req, res) => {
+export const getAllCart = async (req, res) => {
   try {
     const carts = await Cart.find();
     res.status(200).json(carts);
