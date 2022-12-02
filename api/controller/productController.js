@@ -1,4 +1,4 @@
-import Product from '../models/productModel.js';
+import Product from "../models/productModel.js";
 
 //CREATE
 export const createProduct = async (req, res) => {
@@ -10,7 +10,7 @@ export const createProduct = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 //UPDATE
 export const updateProduct = async (req, res) => {
@@ -26,7 +26,7 @@ export const updateProduct = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 //DELETE
 export const deleteProduct = async (req, res) => {
@@ -36,7 +36,7 @@ export const deleteProduct = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 //GET PRODUCT
 export const getProduct = async (req, res) => {
@@ -46,8 +46,7 @@ export const getProduct = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET ALL PRODUCTS
 export const getAllProducts = async (req, res) => {
@@ -72,4 +71,4 @@ export const getAllProducts = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};

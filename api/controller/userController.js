@@ -24,14 +24,10 @@ export const login = async (req, res) => {
     const user = await User.findOne({ username: req.body.username });
     !user && res.status(401).json("Wrong credentials!");
 
-    const hashedPassword = CryptoJS.AES.decrypt(
-      user.password,
-      process.env.PASS_SEC
-    );
+    const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
     const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
 
-    OriginalPassword !== req.body.password &&
-      res.status(401).json("Wrong credentials!");
+    OriginalPassword !== req.body.password && res.status(401).json("Wrong credentials!");
 
     const accessToken = jwt.sign(
       {
@@ -39,24 +35,21 @@ export const login = async (req, res) => {
         isAdmin: user.isAdmin,
       },
       process.env.JWT_SEC,
-      {expiresIn:"3d"}
+      { expiresIn: "3d" }
     );
 
     const { password, ...others } = user._doc;
 
-    res.status(200).json({...others, accessToken});
+    res.status(200).json({ ...others, accessToken });
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 //UPDATE
 export const updateUser = async (req, res) => {
   if (req.body.password) {
-    req.body.password = CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.PASS_SEC
-    ).toString();
+    req.body.password = CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString();
   }
 
   try {
@@ -71,7 +64,7 @@ export const updateUser = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 //DELETE
 export const deleteUser = async (req, res) => {
@@ -81,8 +74,7 @@ export const deleteUser = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET USER
 export const getUser = async (req, res) => {
@@ -93,32 +85,27 @@ export const getUser = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET ALL USERS
 export const getAllUsers = async (req, res) => {
   const query = req.query.new;
   try {
-    const users = query
-      ? await User.find().sort({ _id: -1 }).limit(5)
-      : await User.find();
+    const users = query ? await User.find().sort({ _id: -1 }).limit(5) : await User.find();
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
-
-export const getUsers = async (req,res,next)=>{
+export const getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
   } catch (err) {
     next(err);
   }
-}
-
+};
 
 //GET USER STATS
 export const getUserStats = async (req, res) => {
@@ -140,8 +127,8 @@ export const getUserStats = async (req, res) => {
         },
       },
     ]);
-    res.status(200).json(data)
+    res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};

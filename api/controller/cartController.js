@@ -1,4 +1,4 @@
-import Cart from '../models/cartModel.js';
+import Cart from "../models/cartModel.js";
 
 //CREATE
 export const createCart = async (req, res) => {
@@ -10,7 +10,7 @@ export const createCart = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 //DELETE
 export const deleteCart = async (req, res) => {
@@ -20,8 +20,7 @@ export const deleteCart = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //UPDATE ORDER
 export const updateCart = async (req, res) => {
@@ -37,8 +36,7 @@ export const updateCart = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET ORDER
 export const getCart = async (req, res) => {
@@ -48,8 +46,7 @@ export const getCart = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET ALL ORDERS
 export const getAllCart = async (req, res) => {
@@ -59,5 +56,4 @@ export const getAllCart = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};

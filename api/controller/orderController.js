@@ -10,7 +10,7 @@ export const createOrder = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
 //DELETE
 export const deleteOrder = async (req, res) => {
@@ -20,8 +20,7 @@ export const deleteOrder = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //UPDATE ORDER
 export const updateOrder = async (req, res) => {
@@ -37,8 +36,7 @@ export const updateOrder = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET ORDER
 export const getOrder = async (req, res) => {
@@ -48,8 +46,7 @@ export const getOrder = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET ALL ORDERS
 export const getAllOrders = async (req, res) => {
@@ -59,8 +56,7 @@ export const getAllOrders = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
-
+};
 
 //GET INCOME
 export const getIncome = async (req, res) => {
@@ -96,4 +92,4 @@ export const getIncome = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
