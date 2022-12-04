@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import userRoute from "./routes/users.js";
 import productRoute from "./routes/products.js";
@@ -16,6 +17,8 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(express.json());
+app.use(cors());
+
 
 const PORT = 5000;
 app.listen(process.env.PORT || 5000, () => {
