@@ -60,8 +60,8 @@ const ProductList = () => {
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select name="color" onChange={handleFilters}>
-            <Option disabled>Color</Option>
+          <Select name="type" onChange={handleFilters}>
+            <Option disabled>Type</Option>
             <Option>Plant</Option>
             <Option>Fruits & Vegetables</Option>
             <Option>Animal Produce</Option>

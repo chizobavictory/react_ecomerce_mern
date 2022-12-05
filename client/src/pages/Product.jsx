@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import {Add, Remove} from "@material-ui/icons";
+import { Add, Remove } from "@material-ui/icons";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
@@ -137,7 +137,7 @@ const Product = () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
-      } catch {}
+      } catch { }
     };
     getProduct();
   }, [id]);
@@ -161,12 +161,12 @@ const Product = () => {
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src={product.img} />
+          <Image src={product.image} />
         </ImgContainer>
         <InfoContainer>
           <Title>{product.title}</Title>
-          <Desc>{product.desc}</Desc>
-          <Price>$ {product.price}</Price>
+          <Desc>{product.description}</Desc>
+          <Price>N {product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>

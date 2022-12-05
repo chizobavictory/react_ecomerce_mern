@@ -47,7 +47,10 @@ const Circle = styled.div`
 `;
 
 const Image = styled.img`
-  height: 75%;
+max-width:100%;
+max-height:100%;
+background-fit:cover;
+background-size: contain;
   z-index: 2;
 `;
 
@@ -71,14 +74,14 @@ const Product = ({ item }) => {
   return (
     <Container>
       <Circle />
-      <Image src={item.img} />
+      <Image src={item.image} />
       <Info>
         <Icon>
           <ShoppingCartOutlined />
         </Icon>
         <Icon>
           <Link to={`/product/${item._id}`}>
-          <SearchOutlined />
+            <SearchOutlined />
           </Link>
         </Icon>
         <Icon>
