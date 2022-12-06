@@ -10,6 +10,7 @@ import cartRoute from "./routes/cart.js";
 
 const app = express();
 dotenv.config();
+mongoose.set('strictQuery', false)
 
 mongoose
   .connect(process.env.MONGO_URL)
