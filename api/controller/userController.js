@@ -1,6 +1,7 @@
 import User from "../models/UserModel.js";
 import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
+import router from "../routes/users.js";
 
 //REGISTER
 export const register = async (req, res) => {
@@ -132,3 +133,13 @@ export const getUserStats = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+
+export const logout = async (req, res) => {
+  try {
+    res.clearCookie("token").json("User has been Logged out");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+

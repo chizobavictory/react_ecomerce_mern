@@ -12,6 +12,7 @@ export const login = async (dispatch, user) => {
   }
 };
 
+
 // function to register
 export const register = async (dispatch, user) => {
   dispatch(registerStart());
@@ -22,3 +23,6 @@ export const register = async (dispatch, user) => {
     dispatch(registerFailure());
   }
 }
+
+
+//function to logout
