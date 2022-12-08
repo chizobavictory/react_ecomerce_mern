@@ -8,13 +8,15 @@ import productRoute from "./routes/products.js";
 import orderRoute from "./routes/order.js";
 import cartRoute from "./routes/cart.js";
 
+
+
 const app = express();
 dotenv.config();
 mongoose.set('strictQuery', false)
 
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => console.log("DBConnection Successfull"))
+  .then(() => console.log("DB Connection Successfull"))
   .catch((err) => console.log(err));
 
 app.use(express.json());
