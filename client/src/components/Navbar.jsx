@@ -3,7 +3,7 @@ import { Badge } from "@material-ui/core";
 import styled from 'styled-components'
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { mobile } from "../responsive";
-
+import { logout } from '../redux/apiCalls';
 
 const Container = styled.div`
 height:60px;
@@ -69,6 +69,7 @@ ${mobile({ display: "none" })}
 
 
 
+
 function Navbar() {
   return (
     <Container>
@@ -86,6 +87,7 @@ function Navbar() {
         <Right>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
+          <MenuItem>SIGN OUT</MenuItem>
           <MenuItem>
             <Badge badgeContent={3} color="primary">
               <ShoppingCartOutlined />

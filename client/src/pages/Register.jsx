@@ -64,9 +64,6 @@ const Error = styled.span`
 `;
 
 
-
-
-
 const Register = () => {
   const isFetching = useSelector((state) => state.isFetching);
   const error = useSelector((state) => state.error);
@@ -79,11 +76,6 @@ const Register = () => {
     history.push("/login");
   };
 
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   dispatch(login());
-  //   history.push("/");
-  // };
 
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
