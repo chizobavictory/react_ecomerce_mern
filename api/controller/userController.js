@@ -1,7 +1,6 @@
 import User from "../models/UserModel.js";
 import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
-import router from "../routes/users.js";
 
 //REGISTER
 export const register = async (req, res) => {
