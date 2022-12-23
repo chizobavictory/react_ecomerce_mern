@@ -1,3 +1,5 @@
+https://user-images.githubusercontent.com/43314673/209293340-e7ee540a-85bf-4544-b91d-71597fc5f5f4.mov
+
 ### FoodApp_Fullstack
 A FulIStack Food Order Application using React for frontend and capable of performing CRUD (Create, Read, Update and Delete)  operations using SQLite database.  Implemented Notifications, OTP, Authorization and Authentication on all routes, testing and created docker image. It includes both the api(backend) and the client(frontend).
 
@@ -34,5 +36,4 @@ IMPLEMENT AUTHORIZATION AND AUTHENTICATION: PROTECT ALL ROUTES. ONLY THE LOGGED-
 - PUT Request which updates fields of a particular data using the id in database
 - DELETE Request which removes a particular data from your database using the id
 
-https://user-images.githubusercontent.com/43314673/209293340-e7ee540a-85bf-4544-b91d-71597fc5f5f4.mov
 
