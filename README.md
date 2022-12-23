@@ -1,8 +1,7 @@
 ### FoodApp_Fullstack
 A FulIStack Food Order Application using React for frontend and capable of performing CRUD (Create, Read, Update and Delete)  operations using SQLite database.  Implemented Notifications, OTP, Authorization and Authentication on all routes, testing and created docker image. It includes both the api(backend) and the client(frontend).
 
-https://user-images.githubusercontent.com/43314673/209293340-e7ee540a-85bf-4544-b91d-71597fc5f5f4.mov
-
+https://user-images.githubusercontent.com/43314673/209409910-4df469f5-338f-4db4-9ef8-fddb916296a8.mov
 
 ### Technologies
 - React
