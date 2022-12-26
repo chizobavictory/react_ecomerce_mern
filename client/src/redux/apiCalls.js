@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess } from "./loginRedux";
+import { loginFailure, loginStart, loginSuccess } from "./userRedux";
 import { registerStart, registerSuccess, registerFailure } from "./registerRedux.js";
 import { logoutStart, logoutSuccess, logoutFailure } from "./logoutRedux.js";
 import { publicRequest, userRequest } from "../requestMethods";

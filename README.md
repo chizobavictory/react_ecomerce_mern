@@ -36,3 +36,6 @@ IMPLEMENT AUTHORIZATION AND AUTHENTICATION: PROTECT ALL ROUTES. ONLY THE LOGGED-
 - POST Request which adds data to your database file
 - PUT Request which updates fields of a particular data using the id in database
 - DELETE Request which removes a particular data from your database using the id
+
+### Postman Documentation
+- https://documenter.getpostman.com/view/24035086/2s8YzTSgde
