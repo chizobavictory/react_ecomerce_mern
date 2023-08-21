@@ -12,9 +12,9 @@ router.get("/logout", logout); //LOGOUT
 
 router.put("/make-admin/:userId", verifyToken, makeAdmin) //MAKE ADMIN
 router.put("/:id", verifyTokenAndAuthorization, updateUserPassword); //UPDATE PASSWORD
-router.delete("/:id", verifyTokenAndAuthorization, deleteUser); //DELETE
-router.get("/find/:id", verifyTokenAndAdmin, getUser); //READ
-router.get("/", verifyTokenAndAdmin, getAllUsers); //READ
+router.delete("/:id", verifyTokenAndAdmin, deleteUser); //DELETE
+router.get("/find/:id", verifyTokenAndAuthorization, getUser); //GET A SIGNLE USER
+router.get("/", verifyTokenAndAdmin, getAllUsers); //GET ALL USERS
 router.get("/stats", verifyTokenAndAdmin, getUserStats);
 
 export default router;

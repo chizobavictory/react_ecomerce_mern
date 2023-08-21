@@ -20,8 +20,20 @@ https://user-images.githubusercontent.com/43314673/209409910-4df469f5-338f-4db4-
 - Initialize tsconfig.
 - Create .gitignore file to ignore the node_modules
 
-### Problem Description:
-Create an ecommerce Express application, that makes a CRUD operation (create, read, update, delete) using MongoDB, document and publish your endpoints using postman. In this project, you’ll build a basic CRUD (Create, Read, Update, Delete) for an Hotel Listing Application.
+### Description:
+Built an ecommerce Express application, that makes a CRUD operation (create, read, update, delete) using MongoDB, document and publish your endpoints using postman. In this project, you’ll build a basic CRUD (Create, Read, Update, Delete) for an Hotel Listing Application.
+
+### Features:
+- User must register
+- User must login
+- User must logout
+- User should verify email address
+- User should be able to change password
+- User should be able to add product to cart
+- User should be able to view cart
+- User should be able to remove product from cart
+- User should be able to checkout
+- User should be able to view order history
 
 ### Requirements:
 IMPLEMENT AUTHORIZATION AND AUTHENTICATION: PROTECT ALL ROUTES. ONLY THE LOGGED-IN USERS CAN PERFORM THE FOLLOWING OPERATIONS
@@ -38,4 +50,4 @@ IMPLEMENT AUTHORIZATION AND AUTHENTICATION: PROTECT ALL ROUTES. ONLY THE LOGGED-
 - DELETE Request which removes a particular data from your database using the id
 
 ### Postman Documentation
-- https://documenter.getpostman.com/view/24035086/2s8YzTSgde
+- https:documenter.getpostman.com/view/24035086/2s8YzTSgde
