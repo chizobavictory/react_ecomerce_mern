@@ -79,10 +79,12 @@ export const updateUserPassword = async (req, res) => {
 
 //DELETE
 export const deleteUser = async (req, res) => {
+  const userId = req.params.id;
   try {
-    await User.findByIdAndDelete(req.params.id);
+    await userModel.findByIdAndDelete(userId);
     res.status(200).json("User has been deleted...");
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 };
@@ -90,7 +92,7 @@ export const deleteUser = async (req, res) => {
 //GET USER
 export const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await userModel.findById(req.params.id);
     const { password, ...others } = user._doc;
     res.status(200).json(others);
   } catch (err) {
@@ -102,7 +104,7 @@ export const getUser = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   const query = req.query.new;
   try {
-    const users = query ? await User.find().sort({ _id: -1 }).limit(5) : await User.find();
+    const users = query ? await userModel.find().sort({ _id: -1 }).limit(5) : await User.find();
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json(err);
@@ -111,7 +113,7 @@ export const getAllUsers = async (req, res) => {
 
 export const getUsers = async (req, res, next) => {
   try {
-    const users = await User.find();
+    const users = await userModel.find();
     res.status(200).json(users);
   } catch (err) {
     next(err);
@@ -124,7 +126,7 @@ export const getUserStats = async (req, res) => {
   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
 
   try {
-    const data = await User.aggregate([
+    const data = await userModel.aggregate([
       { $match: { createdAt: { $gte: lastYear } } },
       {
         $project: {
