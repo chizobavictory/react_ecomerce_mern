@@ -1,70 +1,81 @@
-import User from "../models/UserModel.js";
+import { userModel, OTPModel } from "../models/UserModel.js";
 import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
+import generateOTP from "../utils/otpGenerator.js";
+import sendMail from "../utils/mailService.js";
+import Cart from "../models/CartModel.js";
 
-//REGISTER
-export const register = async (req, res) => {
-  const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    password: CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString(),
-  });
+//MAKE USER ADMIN
+export const makeAdmin = async (req, res) => {
+  const userId = req.params.userId;
 
   try {
-    const savedUser = await newUser.save();
-    res.status(201).json(savedUser);
+    const user = await userModel.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    user.isAdmin = true;
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "User has been updated to an Admin",
+    });
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
   }
 };
+    
 
-//LOGIN
-export const login = async (req, res) => {
+//UPDATE USER PASSWORD
+export const updateUserPassword = async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+
+  if (!oldPassword || !newPassword) {
+    return res.status(400).json({ message: "Both oldPassword and newPassword are required" });
+  }
+
+  const userId = req.params.id;
   try {
-    const user = await User.findOne({ username: req.body.username });
-    !user && res.status(401).json("Wrong credentials!");
 
-    const hashedPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
-    const OriginalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+    const user = await userModel.findById(userId);
 
-    OriginalPassword !== req.body.password && res.status(401).json("Wrong credentials!");
+    if (!user) {
+      console.log(user)
+      return res.status(404).json({ message: "User not found" });
+    }
 
-    const accessToken = jwt.sign(
-      {
-        id: user._id,
-        isAdmin: user.isAdmin,
-      },
-      process.env.JWT_SEC,
-      { expiresIn: "3d" }
+    const hashedOldPassword = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
+    const originalOldPassword = hashedOldPassword.toString(CryptoJS.enc.Utf8);
+
+    if (originalOldPassword !== oldPassword) {
+      return res.status(401).json({ message: "Incorrect old password" });
+    }
+
+    const updatedPassword = CryptoJS.AES.encrypt(newPassword, process.env.PASS_SEC).toString();
+
+    const updatedUser = await userModel.findOneAndUpdate(
+      { _id: req.params.id },
+      { password: updatedPassword },
+      { new: true } // Return the updated document
     );
 
-    const { password, ...others } = user._doc;
-
-    res.status(200).json({ ...others, accessToken });
+    res.status(200).json({ message: "User password has been updated", user: updatedUser });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ error: err.message, message: "Unable to update user password" });
   }
 };
 
-//UPDATE
-export const updateUser = async (req, res) => {
-  if (req.body.password) {
-    req.body.password = CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SEC).toString();
-  }
 
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    res.status(200).json(updatedUser);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
 
 //DELETE
 export const deleteUser = async (req, res) => {
@@ -133,12 +144,4 @@ export const getUserStats = async (req, res) => {
   }
 };
 
-
-export const logout = async (req, res) => {
-  try {
-    res.clearCookie("token").json("User has been Logged out");
-  } catch (err) {
-    res.status(500).json(err);
-  }
-}
 
