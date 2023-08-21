@@ -91,8 +91,9 @@ export const deleteUser = async (req, res) => {
 
 //GET USER
 export const getUser = async (req, res) => {
+  const userId = req.params.id;
   try {
-    const user = await userModel.findById(req.params.id);
+    const user = await userModel.findById(userId);
     const { password, ...others } = user._doc;
     res.status(200).json(others);
   } catch (err) {
@@ -104,12 +105,22 @@ export const getUser = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   const query = req.query.new;
   try {
-    const users = query ? await userModel.find().sort({ _id: -1 }).limit(5) : await User.find();
+    let users;
+
+    if (query) {
+      users = await userModel.find().sort({ _id: -1 }).limit(5);
+    } else {
+      // Exclude the password field from the query results using projection
+      users = await userModel.find({}, { password: 0 });
+    }
+
     res.status(200).json(users);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ err: 'Unable to fetch users' });
   }
 };
+
+
 
 export const getUsers = async (req, res, next) => {
   try {
