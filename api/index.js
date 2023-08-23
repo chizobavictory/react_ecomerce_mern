@@ -2,11 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import fileUpload from "express-fileupload";
 
 import userRoute from "./routes/users.js";
 import productRoute from "./routes/products.js";
 import orderRoute from "./routes/order.js";
 import cartRoute from "./routes/cart.js";
+import uploadRoute from "./routes/upload.js";
 
 const app = express();
 dotenv.config();
@@ -19,6 +21,7 @@ mongoose
 
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload({ useTempFiles: true }));
 
 const PORT = 5000;
 app.listen(process.env.PORT || 5000, () => {
@@ -29,3 +32,4 @@ app.use("/api/v1/users", userRoute);
 app.use("/products", productRoute);
 app.use("/orders", orderRoute);
 app.use("/cart", cartRoute);
+app.use("/api/v1/upload", uploadRoute);

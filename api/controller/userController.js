@@ -35,7 +35,6 @@ export const makeAdmin = async (req, res) => {
   }
 };
     
-
 //UPDATE USER PASSWORD
 export const updateUserPassword = async (req, res) => {
   const { oldPassword, newPassword } = req.body;
@@ -74,8 +73,6 @@ export const updateUserPassword = async (req, res) => {
     res.status(500).json({ error: err.message, message: "Unable to update user password" });
   }
 };
-
-
 
 //DELETE
 export const deleteUser = async (req, res) => {
@@ -119,8 +116,6 @@ export const getAllUsers = async (req, res) => {
     res.status(500).json({ err: 'Unable to fetch users' });
   }
 };
-
-
 
 export const getUsers = async (req, res, next) => {
   try {
