@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import { makeAdmin,updateUserPassword, deleteUser, getUser, getAllUsers, getUserStats } from "../controller/userController.js";
+import {avatar} from "../controller/uploadController.js"; // Check the path here
 import { verifyOTP, login, register, logout } from "../controller/authController.js";
 import { verifyTokenAndAdmin, verifyTokenAndAuthorization, verifyToken } from "../middlewares/auth.js";
 // import { uploadFile } from "../controller/uploadController.js";
@@ -20,6 +21,6 @@ router.get("/find/:id", verifyTokenAndAuthorization, getUser); //GET A SIGNLE US
 router.get("/", verifyTokenAndAdmin, getAllUsers); //GET ALL USERS
 router.get("/stats", verifyTokenAndAdmin, getUserStats); //GET USER STATS
 
-// router.post("/upload", upload.single("filename"), uploadFile);
+router.post("/upload-avatar/:id", verifyToken, avatar); //UPLOAD AVATAR
 
 export default router;
