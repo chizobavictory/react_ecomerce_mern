@@ -1,10 +1,10 @@
 import { userModel, OTPModel } from "../models/UserModel.js";
-const { upload } = require("../cloudinary").default;
-const { upload } = require("../cloudinary").default;
-const fs = require("fs");
+import upload from "../cloudinary.js";
+import fs from "fs";
 const dir = "tmp";
 
-const avatarUpload = async (req, res) => {
+
+export const avatar = async (req, res) => {
   try {
     let user = await userModel.findById(req.params.id);
     if (user) {
@@ -64,4 +64,4 @@ const avatarUpload = async (req, res) => {
   }
 };
 
-export default avatarUpload;
+// export default avatar;
