@@ -1,6 +1,7 @@
 // cloudinary.js
-import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
+import { v2 as cloudinary } from "cloudinary";
+
 dotenv.config();
 
 cloudinary.config({
@@ -15,4 +16,4 @@ const upload = async (file) => {
   return image;
 };
 
-export default { upload };
+export default upload; // Remove the object wrapper
