@@ -3,10 +3,11 @@ import upload from "../cloudinary.js";
 import fs from "fs";
 const dir = "tmp";
 
-
 export const avatar = async (req, res) => {
   try {
-    let user = await userModel.findById(req.params.id);
+    const userId = req.params.id;
+    let user = await userModel.findById(userId);
+    console.log(req.files);
     if (user) {
       if (!req.files) return res.send("Please upload an image");
 
@@ -57,6 +58,7 @@ export const avatar = async (req, res) => {
       });
     }
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       message: "Error uploading avatar",
       error: err,
