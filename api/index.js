@@ -29,7 +29,7 @@ app.listen(process.env.PORT || 5000, () => {
 });
 
 app.use("/api/v1/users", userRoute);
-app.use("/products", productRoute);
+app.use("/api/v1/products", productRoute);
 app.use("/orders", orderRoute);
 app.use("/cart", cartRoute);
 app.use("/api/v1/upload", uploadRoute);

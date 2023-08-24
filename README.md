@@ -1,6 +1,10 @@
-### FoodApp_Fullstack
+### Anifarm_Fullstack
 A FullStack Ecommerce Application using Reactand Redux for the frontend and capable of performing CRUD (Create, Read, Update and Delete)operations with Express, it uses MongoDB Database. 
 Implemented  Authorization and Authentication on all routes. It includes both the API(backend) and the client(frontend).
+
+https://user-images.githubusercontent.com/43314673/209409910-4df469f5-338f-4db4-9ef8-fddb916296a8.mov
+
+
 
 ### Technologies
 - React
