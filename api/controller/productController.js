@@ -1,16 +1,35 @@
 import Product from "../models/productModel.js";
+import upload from "../cloudinary.js"
 
 //CREATE
 export const createProduct = async (req, res) => {
-  const newProduct = new Product(req.body);
-
   try {
+    const userId = req.params.id; // Get the userId from the request params
+
+    if (!req.files || !req.files.image) {
+      return res.status(400).json({ error: "Image is required when creating a product." });
+    }
+
+    const imageFile = req.files.image; // Get the uploaded image file
+    const uploadedImage = await upload(imageFile.tempFilePath); // Upload the image to Cloudinary
+    const imageURL = uploadedImage.secure_url;
+
+    const newProduct = new Product({
+      ...req.body,
+      image: imageURL, // Set the image URL in the product model
+      userId: userId, // Assign the userId from the request params
+    });
+
     const savedProduct = await newProduct.save();
     res.status(200).json(savedProduct);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 };
+
+
+
 
 //UPDATE
 export const updateProduct = async (req, res) => {
