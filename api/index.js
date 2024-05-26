@@ -8,7 +8,7 @@ import userRoute from "./routes/users.js";
 import productRoute from "./routes/products.js";
 import orderRoute from "./routes/order.js";
 import cartRoute from "./routes/cart.js";
-import uploadRoute from "./routes/upload.js";
+// import uploadRoute from "./routes/upload.js";
 
 const app = express();
 dotenv.config();
@@ -30,6 +30,6 @@ app.listen(process.env.PORT || 5000, () => {
 
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/products", productRoute);
-app.use("/orders", orderRoute);
-app.use("/cart", cartRoute);
-app.use("/api/v1/upload", uploadRoute);
+app.use("/api/v1/orders", orderRoute);
+app.use("/api/v1/cart", cartRoute);
+// app.use("/api/v1/upload", uploadRoute);
